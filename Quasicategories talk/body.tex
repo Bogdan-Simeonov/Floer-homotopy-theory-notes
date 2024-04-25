@@ -107,7 +107,9 @@ This is the left adjoint to the functor $S$ taking a topological space $Y$ to it
 
 These in fact form what is called a \emph{Quillen equivalence of model categories}: the homotopy categories of both sides are the same, and the Kan complexes correspond to topological spaces.
 
-This fits into a more general picture: whenever we left Kan extend $F:\mathbf{\Delta}\rightarrow \calE$ via Yoneda, we get a right adjoint $$R:\calE \rightarrow \sSet, Re_n = \calE(F[n],e)$$
+\begin{remark}{Adjoints of Kan extensions}{Adjoints of Kan extensions}
+    This fits into a more general picture: whenever we left Kan extend $F:\mathbf{\Delta}\rightarrow \calE$ via Yoneda, we get a right adjoint $$R:\calE \rightarrow \sSet, Re_n = \calE(F[n],e)$$
+\end{remark}
 
 These two functors are extremely useful. For example, the classifying space of a group $G$ can be constructed by taking the nerve of the category defined by $G$ and then its geometric realization. Similarly, if one takes the geometric realization of $SY$, then it forms a CW complex whose cellular homology is the same as the singular homology of $Y$: $$C^{\mathrm{cell}}_\bullet(|SY|)\simeq C_\bullet^{\mathrm{sing}}(Y)$$
 
@@ -319,6 +321,8 @@ With the tools from the previous section, we are ready to define the mapping spa
 
 Example: the loop space $\Omega(X)=\mathrm{Map}_X(x,x)$. 
 
+In ordinary category theory, the 'mapping space' is just a set, or a $0$-category. In the same way, we move from an $(\infty,1)$ category to $(\infty, 0)$ when we take mapping spaces of quasicategories, i.e. the mapping spaces are $\infty$-groupoids.
+
 We can see that there is a morphism between two $f,g:c\rightarrow d$ if and only if $f\simeq g$, since basically we have to fill in a square which restricts to $f,g$ on the sides and the identity maps on the top and bottom, since $\Delta^1_0$ has degeneracy maps which have $s(c)=id_c$ and $s(d)=id_d$.
 
 \begin{definition}{Fully faithful functors}{}
@@ -330,50 +334,44 @@ Note that this is not a property of the homotopy category! Take $X$ to be a nonc
 
 Similarly, we can define essential surjectivity. For spaces, this should be a surjection on $\pi_0$. 
 
-In particular, a map of spaces is ess. surj and fully faithful iff it is a homotopy equivalence.
+In particular, a map of spaces is ess. surj and fully faithful iff it is a homotopy equivalence, just like in ordinary category theory.
 
 \begin{proposition}{Proposition}{}
     $F$ is ess surj and fully faithful iff it is an equivalence.
 \end{proposition}
 
-\begin{proof}
-    Want to reduce this to a question about spaces. Use the following trick: an functor is an equivalence iff it induces isomorphisms on $\mathrm{Fun}(K,C)^{core}\rightarrow \mathrm{Fun}(K,D)^{core}$. Restrict attention to $K=\Delta^1$ first.  Look at evaluation diagram: $$\begin{CD} \mathrm{Fun}(\Delta^1,C) @>>> \mathrm{Fun}(\Delta^1, D)\\ @VVV @VVV \\ C\times C @>>> D\times D\end{CD}$$The vertical arrows are Kan fibrations. The fibers are mapping spaces $\mathrm{Map}(c,c')$ and then we just use the fact that the functor is fully faithful.
-\end{proof}
+%\begin{proof}
+%    Want to reduce this to a question about spaces. Use the following trick: an functor is an equivalence iff it induces isomorphisms on $\mathrm{Fun}(K,C)^{core}\rightarrow \mathrm{Fun}(K,D)^{core}$. Restrict attention to $K=\Delta^1$ first.  Look at evaluation diagram: $$\begin{CD} \mathrm{Fun}(\Delta^1,C) @>>> \mathrm{Fun}(\Delta^1, D)\\ @VVV @VVV \\ C\times C @>>> D\times D\end{CD}$$The vertical arrows are Kan fibrations. The fibers are mapping spaces $\mathrm{Map}(c,c')$ and then we just use the fact that the functor is fully faithful.
+%\end{proof}
 
-\subsubsection{Subcategories}
+\paragraph*{Cores and subcategories}
 Suppose we have a subcategory of the homotopy category of an infinity category $C$. Form a pullback using the nerve construction: 
 
 $$\begin{CD} C' @>>> C\\ @VVV @VVV \\ N(h(C)') @>>> N(h(C)) \end{CD}$$
 
-This is the subcategory of $C$ spanned by $h(C)'$.  This is an infinity category, which can be checked by using the criterion.
+This is the subcategory of $C$ spanned by $h(C)'$.  This is an infinity category, which can be checked by using the lifting criterion as well as the fact that an $n$ simplex in a nerve is determined by its restriction to the spine, which is a subsimplical set of the inner horns. 
 
 \begin{definition}{Cores}{}
     The core of an infinity category is the subcategory spanned by the core of $h(C)$, i.e. the subcategory spanned by isomorphisms. This is the maximal infinity groupoid in $C$.
 
 \end{definition}
 
-\subsubsection{Compositions}
+\paragraph*{The parametrized composition space}
 
 Suppose we have three objects $c,d,e\in C$. Can define a triple mapping space, by instead using $\Delta^2$. 
 
 $$\begin{CD} \mathrm{Map}(c,d,e) @>>> \mathrm{Fun}(\Delta^2, C)\\ @VVV @VVV \\ \Delta^0 @>>> C\times C\times C\end{CD}$$
 
-This has projection maps to the usual mapping spaces. Then $$\mathrm{Map}(c,d,e)\rightarrow \mathrm{Map}(d,e)\times \mathrm{Map}(c,d)$$is a trivial Kan fibration. The fiber is the space of compositions, which is contractible. We thus have a homotopy inverse section i.e. a choice of composition. But this is not well-defined, but only unique up to homotopy. Uses general fact that the sections of a Kan fibration form a contractible set.
-
-*Exercise:* define the simplicial set of sections of a trivial Kan fibration and show it is contractible.
-
-Basically, the idea is that trivial Kan fibrations are stable under $\mathrm{Fun}$ and hence we can form a pullback $$\begin{CD}\Gamma(Y,X)@>>> \mathrm{Fun}(Y,X)\\ @VVV @VVpV \\ \Delta^0 @>>id> \mathrm{Fun}(Y,Y)\end{CD}$$
-
-
-
+This has projection maps to the usual mapping spaces. Then $$\mathrm{Map}(c,d,e)\rightarrow \mathrm{Map}(d,e)\times \mathrm{Map}(c,d)$$is a trivial Kan fibration. The fiber is the space of compositions, which is contractible. We thus have a homotopy inverse section i.e. a choice of composition. But this is not well-defined, but only unique up to homotopy. One has to uses the general fact that the sections of a Kan fibration form a contractible set: the idea is that trivial Kan fibrations are stable under $\mathrm{Fun}$ and hence we can form a pullback $$\begin{CD}\Gamma(Y,X)@>>> \mathrm{Fun}(Y,X)\\ @VVV @VVpV \\ \Delta^0 @>>id> \mathrm{Fun}(Y,Y)\end{CD}$$
 
 
 \subsection{The homotopy coherent nerve}
-In this section, we describe an adjunction between the simplicial sets and simplicially enriched categories in the form of the coherent nerve and the thickening functor. This also forms a Quillen equivalence between Quillen's model structure on $\sSet$ and Segal's model structure on 
-We have a 'thickening' functor $$\mathfrak{C}:\mathbf{\Delta}\rightarrow \mathbf{sCat}$$
+In this section, we describe an adjunction between the simplicial sets and simplicially enriched categories in the form of the coherent nerve and the thickening functor. This also forms a Quillen equivalence between Quillen's model structure on $\sSet$ and Segal's model structure on $\mathbf{sCat}$.
+
+The idea is that we have a 'thickening' functor $$\mathfrak{C}:\mathbf{\Delta}\rightarrow \mathbf{sCat}$$
 This can be left Kan extended to a functor on simplicial sets, and has an adjoint called the \emph{homotopy coherent nerve}.
 
-Suppose we have a 1-category $C$ and some class of morphisms $W\subset C_1$. Can form a universal localization category $C[W^{-1}]$ which inverts these maps, but this is not well-behaved. The correct thing to define is a actually an infinity category. 
+\paragraph*{The thickening functor}
 
 The construction is involved.
 
@@ -381,27 +379,69 @@ Suppose $0\leq i\leq j$ . Denote by $P_{i,j}$ to be the set of subsets $$P_{i,j}
 
 Define $$\mathfrak{C}[\Delta^n]:=\begin{cases}0,1,...,n \text{ as objects}\\\inHom(i,j)=N(P_{i,j}) \end{cases}$$This is a thickening of $\Delta^n$. It is a simplicial category, i.e. a category enriched over simplicial sets. Composition is defined by taking unions of subsets. 
 
-We can extend this functor to $\sSet$ by using e.g. the density theorem and this will be a Kan extension along Yoneda. This defines a functor $\mathfrak{C}$.
+\begin{example}{Example}{}
+    We have that $\mathfrak{C}\Delta^2$ has three objects $0,1,2$. The hom sets are: \begin{itemize}
+        \item $\mathfrak{C}\Delta^2(0,0)=\mathfrak{C}\Delta^2(0,1)=\mathfrak{C}\Delta^2(1,1)=\mathfrak{C}\Delta^2(1,2)=\mathfrak{C}\Delta^2(2,2)=\Delta^0$
+        \item $\mathfrak{C}\Delta^2(0,2)=\Delta^1$ is the nerve of the poset of subsets containing both $0$ and $2$ i.e. $N(\{0,2\}\subset \{0,1,2\})$. 
+    \end{itemize}
+    
+\end{example}
 
+We can extend this functor to $\sSet$ by using the density theorem and this will be a Kan extension along Yoneda. This defines a functor $\mathfrak{C}$, which has an adjoint $\calN$ as in \ref{rem:Adjoints of Kan extensions}. We get a picture \[\begin{tikzcd}
+	&& \sSet \\
+	\\
+	{\mathbf{\Delta}} &&&& {\mathbf{sCat}}
+	\arrow[""{name=0, anchor=center, inner sep=0}, "{\mathfrak{C}}", curve={height=-12pt}, from=1-3, to=3-5]
+	\arrow["{\mathscr{Y}}", from=3-1, to=1-3]
+	\arrow["{\mathfrak{C}}"', from=3-1, to=3-5]
+	\arrow[""{name=1, anchor=center, inner sep=0}, "\calN", curve={height=-12pt}, from=3-5, to=1-3]
+	\arrow["\dashv"{anchor=center, rotate=-141}, draw=none, from=0, to=1]
+\end{tikzcd}\]
+
+As we saw in \ref{rem:Adjoints of Kan extensions}, this forces the value of $\calN$ to be $$\calN C_n = \Hom_{\mathrm{sCat}}(\mathfrak{C}\Delta^n, C)$$
+
+For example, the objects of $\calN C_0$ are the objects of $C$, the morphisms are also the same, but $(\calN C)_2$ consists of the data of three objects $x,y,z$, three morphisms $f\in C(x,y)_0, g\in C(y,z)_0, h\in C(x,z)_0$ and a 1 simplex in $C(x,z)_1=\Fun(\Delta^1, C(x,z))$ restricting to $h$ and $g\circ f$ on the ends. Informally, a 2-simplex in this simplicial set consists of 2 composable morphisms and a homotopy between their composition and a third morphism.
+
+We apply this to the simplicially enriched category of Kan complexes, which has objects Kan complexes and morphism spaces $\Fun(K,L)$, which are also Kan complexes!
 
 \begin{definition}{Spc}{}
-    We define a simplicial set whose n-simplices are $$Spc _n:=\Hom_{\mathrm{sCat}}(\mathfrak{C}\Delta^n, \mathrm{Kan})$$
-    
-    where Kan is the simplicial category of Kan complexes with inner homs as morphisms. This is the homotopy coherent nerve $N(\mathrm{Kan})$, where $N(C)$ is defined analogously, if $C$ is a simplicial set whose inner homs are all Kan. This means that the homotopy coherent nerve is right adjoint to $\mathfrak{C}$. 
+    We define a simplicial set $\calN \, \mathrm{Kan}:=Spc$ whose n-simplices are $$Spc _n:=\Hom_{\mathrm{sCat}}(\mathfrak{C}\Delta^n, \mathrm{Kan})$$ 
 \end{definition}
 
-The zero simplices are just the Kan complexes. The 1-simplices are maps of Kan complexes (functors). The first interesting thing is the 2-simplices: an element consists of the following data $$\begin{gathered}f:X\rightarrow Y\\ g:Y\rightarrow Z\\ h:X\rightarrow Y\\ g\circ f\simeq h\end{gathered}$$
-
 \begin{theorem}{Theorem}{}
-    The homotopy coherent nerve forms an infinity category and there is a canonical htpy equivalence $$\inHom(X,Y)\simeq \mathrm{Map}_{N\mathcal{C}}(X,Y)$$
+    If a given simplicial category $C$ is locally Kan (i.e. all morphism spaces are Kan complexes) then $\calN C$ is an infinity category. In particular, $Spc$ is an infinity category, the infinity category of spaces.
 \end{theorem}
 \begin{proof}
-    By adjunction, the lifting diagram corresponds to one involving $\mathfrak{C}[\Lambda^n_i]$, $\mathfrak{C}[\Delta^n]$ and $\mathcal{C}$. These are basically the same except how to extend it to $\inHom(0,n)$. But since $\mathcal{C}$ is locally Kan, this is possible.
+    By adjunction, the lifting diagram corresponds to one involving $\mathfrak{C}[\Lambda^n_i]$, $\mathfrak{C}[\Delta^n]$ and $\mathcal{C}$. These are basically the same except how to extend it to $\Hom(0,n)$. But since $\mathcal{C}$ is locally Kan, this is possible.
+
+    \[\begin{tikzcd}
+        & {} && {} \\
+        {\Lambda^n_i} & {\calN \,C} && {\mathfrak{C}\Lambda^n_i} & C \\
+        {\Delta^n} &&& {\mathfrak{C}\Delta^n}
+        \arrow["adjunction", curve={height=-24pt}, squiggly, from=1-2, to=1-4]
+        \arrow[from=2-1, to=2-2]
+        \arrow[from=2-1, to=3-1]
+        \arrow[from=2-4, to=2-5]
+        \arrow[from=2-4, to=3-4]
+        \arrow[dashed, from=3-1, to=2-2]
+        \arrow[dashed, from=3-4, to=2-5]
+    \end{tikzcd}\]
+
+    Essentially, $\mathfrak{C}\Lambda^n_i$ has the same objects as $\mathfrak{C}\Delta^n$, but one smaller morphism space: 
+    \begin{itemize}
+    \item $\Hom_{\mathfrak{C}\Lambda^n_i}(i,k)=\Hom_{\mathfrak{C}\Delta^n}(i,k), (i,k)\neq (0,n)$
+    \item $\Hom_{\mathfrak{C}\Lambda^n_i}(0,n)\subset\Hom_{\mathfrak{C}\Delta^n}(0,n)=NP_{0,n}=()\Delta^1)^{n-1}$ is given by deleting the interior and bottom j face. This is an anodyne map, so it lifts if $C$ is locally Kan.
+    
+    \end{itemize}
 \end{proof}
 
-*Example:* the infinity category of quasicategories has objects infinity cats and hom-sets $\mathrm{Fun}(C,D)^\simeq$. We get $\mathrm{Cat}_\infty=N(\mathrm{qCat})$. 
+In fact more is true, even though I am not sure how to prove it: the mapping space in the infinity category of spaces recovers the inner hom $$\inHom(X,Y)=\Fun(X,Y)\simeq \mathrm{Map}_{Spc}(X,Y)$$
 
-\subsubsection{Infinity Yoneda}
+
+
+%*Example:* the infinity category of quasicategories has objects infinity cats and hom-sets $\mathrm{Fun}(C,D)^\simeq$. We get $\mathrm{Cat}_\infty=N(\mathrm{qCat})$. 
+
+\subsection{Infinity Yoneda}
 
 We have a non-unique but contractible choice of compositions, which makes it hard to create a functorial assignment $$\mathrm{Map}(c,d)\rightarrow \mathrm{Map}(c',d)$$
 
@@ -412,3 +452,5 @@ We have a non-unique but contractible choice of compositions, which makes it har
 
 Presheaves on infinity categories
 $$\mathcal{P}(C):=\mathrm{Fun}(C^{op}, Spc)$$
+
+\section{Limits and colimits}
