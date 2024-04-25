@@ -1,0 +1,44 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{kpfonts}
+\usepackage[T1]{fontenc}
+
+\usepackage{biblatex}
+\addbibresource{bibliography.bib}
+
+% push hbox warnings in bibliography under the rug
+\usepackage{etoolbox}
+\apptocmd{\sloppy}{\hbadness 10000\relax}{}{}
+
+\usepackage{geometry}
+\geometry{a4paper, left=30mm, right=30mm, top=20mm, bottom=20mm}
+
+\setlength{\parindent}{0em}
+\setlength{\parskip}{1em}
+\renewcommand{\baselinestretch}{1.5}
+
+\makeatletter
+\renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
+            {-2.5ex\@plus -1ex \@minus -.25ex}%
+            {1.25ex \@plus .25ex}%
+            {\normalfont\normalsize\bfseries}}
+\makeatother
+
+\input{commands.tex}
+
+\title{Quasicategories talk}
+\author{Bogdan Simeonov}
+\date{}
+
+\begin{document}
+
+\input{cover.tex}
+
+\input{body.tex}
+
+\newpage
+\sloppy
+\printbibliography
+
+\end{document}

@@ -1,0 +1,163 @@
+\usepackage{tcolorbox}
+\tcbuselibrary{theorems}
+\tcbuselibrary{breakable}
+
+\usepackage{microtype}
+
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+
+\usepackage{quiver}
+
+\usepackage{pgfplots}
+\pgfplotsset{width=\columnwidth,compat=1.13}
+
+\usepackage{listings}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=none,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+\lstset{style=mystyle}
+
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amscd}
+\usepackage{tikz-cd}
+
+\usepackage{float}
+\usepackage{titling}
+\usepackage{caption}
+\usepackage{subcaption}
+
+\usepackage{hyperref}
+\definecolor{maincolor}{RGB}{0.58,0,0.82}
+\hypersetup{linkcolor=maincolor, linkbordercolor=maincolor, citebordercolor=maincolor} %colorlink removes boxes
+
+\setcounter{section}{0}
+\setcounter{secnumdepth}{4} % how many sectioning levels to assign numbers to
+\setcounter{tocdepth}{4}    % how many sectioning levels to show in ToC
+
+\numberwithin{equation}{section}
+
+\newtcbtheorem[number within=section]{theorem}{Theorem} {theorem style = plain, colback=maincolor!30!white, coltitle=black, colframe=white, fonttitle = \upshape\bfseries, fontupper=\itshape}{th}
+
+\newtcbtheorem[use counter from = theorem]{definition}{Definition} {theorem style = plain, colback=maincolor!30!white, coltitle=black, colframe=white, fonttitle = \upshape\bfseries,  fontupper=\itshape}{dfn}
+
+\newtcbtheorem[use counter from = theorem]{proposition}{Proposition} {theorem style = plain, colback=maincolor!30!white, coltitle=black, colframe=white, fonttitle = \upshape\bfseries,  fontupper=\itshape}{prop}
+
+\newtcbtheorem[use counter from = theorem]{corollary}{Corollary} {theorem style = plain, colback=maincolor!30!white, coltitle=black, colframe=white, fonttitle = \upshape\bfseries,  fontupper=\itshape}{cor}
+
+\newtcbtheorem[use counter from = theorem]{lemma}{Lemma} {theorem style = plain, colback=maincolor!30!white, coltitle=black, colframe=white, fonttitle = \upshape\bfseries,  fontupper=\itshape}{lemma}
+
+\newtcbtheorem[no counter]{ob}{Observation} {theorem style = plain, colback=maincolor!30!white, coltitle=black, colframe=white, fonttitle = \upshape\bfseries,  fontupper=\itshape}{ob}
+
+\newtcbtheorem[no counter]{conjecture}{Conjecture} {theorem style = plain, colback=maincolor!30!white, coltitle=black, colframe=white, fonttitle = \upshape\bfseries,  fontupper=\itshape}{conj}
+
+\newtcbtheorem[use counter from = theorem]{example}{Example} {breakable, theorem style = plain, colback=maincolor!10!white, coltitle=black, colframe=white, fonttitle = \upshape\itshape}{ex}
+
+\newtcbtheorem[no counter]{technicalities}{Technicalities} {theorem style = plain, colback=maincolor!10!white, coltitle=black, colframe=white, fonttitle = \upshape\itshape}{tech}
+
+\newtcbtheorem[use counter from = theorem]{remark}{Remark} {theorem style = plain, colback=maincolor!10!white, coltitle=black, colframe=white, fonttitle = \upshape\itshape}{rem}
+
+\DeclareMathOperator{\adj}{adj} % adjugate matrix
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\cone}{cone}
+\DeclareMathOperator{\Tot}{Tot}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\lExt}{\mathcal{E}\mathit{xt}} % local Ext
+\DeclareMathOperator{\lHom}{\mathcal{H}\mathit{om}} % local Hom
+\newcommand{\dL}{\mathbf{L}} % derived left
+\newcommand{\dR}{\mathbf{R}} % derived right
+\newcommand{\mL}{\mathbb{L}} % left mutation
+\newcommand{\mR}{\mathbb{R}} % right mutation
+\DeclareMathOperator{\RHom}{\dR Hom} % derived usual Hom
+\DeclareMathOperator{\RlHom}{\dR\mathcal{H}\mathit{om}} % derived local Hom
+\DeclareMathOperator{\RG}{\dR\Gamma} % derived global sections
+\newcommand{\Lotimes}{\otimes^\dL} % derived tensor product
+\newcommand{\lperp}[1]{\prescript{\perp}{}{#1}} % left orthogonal
+\DeclareMathOperator{\Set}{\mathbf{Set}}
+\DeclareMathOperator{\sSet}{\mathbf{sSet}}
+\DeclareMathOperator{\sCat}{\mathbf{sCat}}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Proj}{Proj}
+\DeclareMathOperator{\Bl}{Bl}
+\DeclareMathOperator{\Ch}{Ch}
+\DeclareMathOperator{\Pic}{Pic}
+\DeclareMathOperator{\Coh}{Coh}
+\DeclareMathOperator{\QCoh}{QCoh}
+\DeclareMathOperator{\Perf}{Perf}
+\DeclareMathOperator{\DPerf}{\mathfrak{Perf}}
+\DeclareMathOperator{\MF}{MF}
+\newcommand{\Ab}{\mathrm{Ab}}
+
+% letters
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\A}{\mathbb{A}}
+\renewcommand{\P}{\mathbb{P}}
+\renewcommand{\O}{\mathcal{O}}
+\newcommand{\bbH}{\mathbb{H}}
+\newcommand{\calH}{\mathcal{H}}
+\newcommand{\calA}{\mathcal{A}}
+\newcommand{\calB}{\mathcal{B}}
+\newcommand{\calC}{\mathcal{C}}
+\newcommand{\calD}{\mathcal{D}}
+\newcommand{\calE}{\mathcal{E}}
+\newcommand{\calF}{\mathcal{F}}
+\newcommand{\calG}{\mathcal{G}}
+\newcommand{\calL}{\mathcal{L}}
+\newcommand{\calP}{\mathcal{P}}
+\newcommand{\calS}{\mathcal{S}}
+\newcommand{\calI}{\mathcal{I}}
+\newcommand{\calN}{\mathcal{N}}
+\newcommand{\calT}{\mathcal{T}}
+\newcommand{\calR}{\mathcal{R}}
+\newcommand{\bfF}{\mathbf{F}}
+\newcommand{\bfL}{\mathbf{L}}
+\newcommand{\tbfF}{\widetilde{\mathbf{F}}}
+\newcommand{\tbfL}{\widetilde{\mathbf{L}}}
+\newcommand{\scrF}{\mathscr{F}}
+\newcommand{\tscrF}{\widetilde{\mathscr{F}}}
+\newcommand{\scrL}{\mathscr{L}}
+\newcommand{\tscrL}{\widetilde{\mathscr{L}}}
+\newcommand{\scrP}{\mathscr{P}}
+\newcommand{\tscrP}{\widetilde{\mathscr{P}}}
+\newcommand{\frakN}{\mathfrak{N}}
+\newcommand{\frakC}{\mathfrak{C}}
+
+\newcommand{\Fun}{\mathrm{Fun}}
+\newcommand{\inHom}{\underline{\Hom}}
+
+
+
+% names
+\newcommand{\id}{\mathrm{id}} % identity
+\newcommand{\pt}{\mathrm{pt}} % point
+\newcommand{\ev}{\mathrm{ev}} % evaluation
+\newcommand{\qi}{\mathrm{q.i.}} % quasiisomorphism
+\newcommand{\Sg}{\mathrm{Sg}} % singularities
+
+\newcommand{\todo}[1]{{\color{red}\textbf{TODO!: #1}}}
