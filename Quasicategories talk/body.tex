@@ -134,7 +134,7 @@ or equivalently as the subsimplicial set defined by all faces except the $i-th$ 
 For example, a filling in of $\Lambda^2_1$ would constitute a 2-simplex $\sigma$ such that $d_2\sigma=f, d_0\sigma=g$. 
 
 \begin{definition}{Kan complexes and quasicategories}{}
-    A Kan complex is a simplicial set for which every horn admits a filling. An infinity category is a simplicial set $X$ such that any inner horn $i<n$ can be filled.
+    A Kan complex is a simplicial set for which every horn admits a filling. An infinity category is a simplicial set $X$ such that any inner horn $0<i<n$ can be filled.
 \end{definition}
 
 \begin{proposition}{Singular chains are Kan complexes}{}
@@ -454,3 +454,71 @@ Presheaves on infinity categories
 $$\mathcal{P}(C):=\mathrm{Fun}(C^{op}, Spc)$$
 
 \section{Limits and colimits}
+
+\begin{definition}{Limits and colimits}{}
+    A cone over $F:I\rightarrow C$ is a natural transformation $\eta:\underline{l}\rightarrow F$. A limit cone is one such that $$\mathrm{Map}(c,l)\rightarrow \mathrm{Map}{\underline{c},F}$$ is a homotopy equivalence. We need to compose with $\eta$, and while this is not unique, it is up to homotopy.
+
+    Similarly, a cone under $F$ is a natural transformation $\epsilon:F\rightarrow \underline{l}$ and a colimit cone is one such that $$\mathrm{Map}(l,c)\simeq \mathrm{Map}(F,\underline{c})$$
+    
+\end{definition}
+
+An object is initial iff $\mathrm{Map}(l,c)$ is contractible for all $c$ and terminal if $\mathrm{Map}(c,l)$ is contractible for all $c$. An infinity category is called pointed if it has a zero object, i.e. and object that is both initial and final.
+
+\paragraph*{Pullbacks}
+
+A pullback amounts to the data $$\begin{CD}
+    c @> h> > r \\
+    @ViVV @VVfV \\
+    s @> > g> t
+\end{CD}$$
+such that $g\circ i \simeq f\circ h$.
+
+In the infinity category of spaces, this is a homotopy pullback!
+
+\begin{proposition}{Proposition}{}
+    Both $\mathrm{Spc}$ and $\mathrm{Cat}_\infty$ admit small limits and colimits. The inclusion of the former into the latter preserves all limits and colimits.
+    
+\end{proposition}
+
+Just as limits $l$ can be compared to the Yoneda sets in ordinary category theory, so limits in infinity categories can be understood via their mapping spaces. For example, a pushout has the formula $$\mathrm{Map}(y\coprod_x z,c)\simeq \mathrm{Map}(y,c)\times_{\mathrm{Map}(x,c)} \mathrm{Map}(z,c)$$
+
+where the pullbacks are happening in the infinity category of spaces, which we just said admits small limits and colimits.
+
+\paragraph*{Alternative definitions}
+
+There are alternative definitions of limits and colimits via over/undercategories and joins. 
+
+Let \begin{gather*}
+    \star:\Delta \times \Delta\rightarrow \sSet\\
+    [n]\star [m]=N([m]\star [n])
+\end{gather*}
+and extend it to simplicial sets by density. For example, $(\Lambda^2_0)^\triangle\simeq \Delta^1 \times \Delta^1$.
+
+This allows for the definition of the slice over $F:I\rightarrow C$ as the adjoint to the star operation: $$\Hom_{\sSet}(K,C_{/F})=\Hom_F(K\star I, C)$$
+where on the right we consider functors that extend $F$. This is an infinity category whenever $C$ is.
+
+When we take $F=d:\Delta^0\rightarrow C$, we get the overcategory $C_{/d}$ which has objects morphisms $c\rightarrow d$. There is a thickened version of this: $$\begin{CD}
+   \mathrm{Map}(c,d)@> > > C^{/d}@> > > \Fun(\Delta^1,C) \\
+   @VVV @VVV @VVV \\
+   \Delta^0@> > > C @> > > C\times C
+\end{CD}$$
+
+In fact, there is a pullback diagram in $\sSet$ $\begin{CD}
+    \mathrm{Map}(\underline{l}, F)@ > > > C^{/F}\\
+    @VVV @VVV \\
+    \Delta^0 @> > > C
+\end{CD}$
+
+\begin{proposition}{Equivalent definition of limit cone}{}
+    TFAE:\begin{itemize}
+        \item $l$ is a limit cone over $F$
+        \item Restriction induces a homotopy equivalence $$\mathrm{Map}(\underline{c}, \overline{F})\simeq \mathrm{Map}(\underline{c},F)$$where $\overline{F}$ is the extension via $l$ of $F$ to $I^\triangle$.
+        \item $\overline{\eta}\in C_{/F}$ is final.
+    \end{itemize}
+    
+\end{proposition}
+
+\begin{proposition}{Proposition}{}
+    The infinity category of limits $Limits(F)$ is either empty or contractible.
+    
+\end{proposition}
