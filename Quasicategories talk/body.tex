@@ -1,6 +1,6 @@
 We think of an infinity category as a category whose morphism spaces are actually spaces, such that there are coherent higher composition laws. One possible way of modelling such things is using the notion of a simplicial set.
 
-Resources: Emily Riehl's notes on simplicial sets: \url{https://math.jhu.edu/~eriehl/ssets.pdf}
+Resources: \cite*{riehl_ssets},\cite*{gallauer}, \cite*{land_introduction_2021}, \cite*{lurie_higher_2008}.
 
 \section{Simplicial sets basics}
 
@@ -170,6 +170,7 @@ We see then that all usual categories sit inside the quasicategories, but have u
     Suppose $f,g\in X_1$ are morphisms from $a$ to $b$. We have different relations of equivalence $f\sim_a g, f\sim_b g, g\sim_a f, g\sim_b f$ when there is a triangle filling in $f,g$ and an identity morphisms. These are all equivalent when $X$ is a quasicategory.
 \end{definition}
 
+\newpage
 \section{Towards the infinity category of spaces}
 
 The aim of this chapter is two-fold. First, we introduce functor categories, inner fibrations and mapping spaces. Then, we use the homotopy coherent nerve construction and apply it to the simplicially enriched category of Kan complexes to produce the infinity category of spaces.
@@ -441,22 +442,23 @@ In fact more is true, even though I am not sure how to prove it: the mapping spa
 
 %*Example:* the infinity category of quasicategories has objects infinity cats and hom-sets $\mathrm{Fun}(C,D)^\simeq$. We get $\mathrm{Cat}_\infty=N(\mathrm{qCat})$. 
 
-\subsection{Infinity Yoneda}
+%\subsection{Infinity Yoneda}
 
-We have a non-unique but contractible choice of compositions, which makes it hard to create a functorial assignment $$\mathrm{Map}(c,d)\rightarrow \mathrm{Map}(c',d)$$
+%We have a non-unique but contractible choice of compositions, which makes it hard to create a functorial assignment $$\mathrm{Map}(c,d)\rightarrow \mathrm{Map}(c',d)$$
 
-\begin{definition}{Opposite of an infinity category}{}
-    The opposite of an infinity category $C:\Delta^{op}\rightarrow \mathrm{Set}$ is given by precomposing with the opposite map on $\Delta$. This is still an infinity category, since $\Lambda^n_i$ just becomes $\Lambda^n_{n-i}$.  
-\end{definition}
+%\begin{definition}{Opposite of an infinity category}{}
+ %   The opposite of an infinity category $C:\Delta^{op}\rightarrow \mathrm{Set}$ is given by precomposing with the opposite map on $\Delta$. This is still an infinity category, since $\Lambda^n_i$ just becomes $\Lambda^n_{n-i}$.  
+%\end{definition}
 
 
-Presheaves on infinity categories
-$$\mathcal{P}(C):=\mathrm{Fun}(C^{op}, Spc)$$
+%Presheaves on infinity categories
+%$$\mathcal{P}(C):=\mathrm{Fun}(C^{op}, Spc)$$
 
-\section{Limits and colimits}
+\newpage
+\section{A brief review of limits and colimits}
 
 \begin{definition}{Limits and colimits}{}
-    A cone over $F:I\rightarrow C$ is a natural transformation $\eta:\underline{l}\rightarrow F$. A limit cone is one such that $$\mathrm{Map}(c,l)\rightarrow \mathrm{Map}{\underline{c},F}$$ is a homotopy equivalence. We need to compose with $\eta$, and while this is not unique, it is up to homotopy.
+    A cone over $F:I\rightarrow C$ is a natural transformation $\eta:\underline{l}\rightarrow F$. A limit cone is one such that $$\mathrm{Map}(c,l)\rightarrow \mathrm{Map}(\underline{c},F)$$ is a homotopy equivalence. We need to compose with $\eta$, and while this is not unique, it is up to homotopy.
 
     Similarly, a cone under $F$ is a natural transformation $\epsilon:F\rightarrow \underline{l}$ and a colimit cone is one such that $$\mathrm{Map}(l,c)\simeq \mathrm{Map}(F,\underline{c})$$
     
@@ -475,50 +477,52 @@ such that $g\circ i \simeq f\circ h$.
 
 In the infinity category of spaces, this is a homotopy pullback!
 
-\begin{proposition}{Proposition}{}
+\begin{proposition}{}{}
     Both $\mathrm{Spc}$ and $\mathrm{Cat}_\infty$ admit small limits and colimits. The inclusion of the former into the latter preserves all limits and colimits.
     
 \end{proposition}
 
-Just as limits $l$ can be compared to the Yoneda sets in ordinary category theory, so limits in infinity categories can be understood via their mapping spaces. For example, a pushout has the formula $$\mathrm{Map}(y\coprod_x z,c)\simeq \mathrm{Map}(y,c)\times_{\mathrm{Map}(x,c)} \mathrm{Map}(z,c)$$
+using this result, limits in infinity categories can be understood via their mapping spaces. For example, a pushout has the formula $$\mathrm{Map}(y\coprod_x z,c)\simeq \mathrm{Map}(y,c)\times_{\mathrm{Map}(x,c)} \mathrm{Map}(z,c)$$
 
 where the pullbacks are happening in the infinity category of spaces, which we just said admits small limits and colimits.
 
-\paragraph*{Alternative definitions}
+We note that there are alternative definitions of limits and colimits in infinity categories using joins and slices, which can be found in \cite*{land_introduction_2021}.
 
-There are alternative definitions of limits and colimits via over/undercategories and joins. 
+%\paragraph*{Alternative definitions}
 
-Let \begin{gather*}
-    \star:\Delta \times \Delta\rightarrow \sSet\\
-    [n]\star [m]=N([m]\star [n])
-\end{gather*}
-and extend it to simplicial sets by density. For example, $(\Lambda^2_0)^\triangle\simeq \Delta^1 \times \Delta^1$.
+%There are alternative definitions of limits and colimits via over/undercategories and joins. 
 
-This allows for the definition of the slice over $F:I\rightarrow C$ as the adjoint to the star operation: $$\Hom_{\sSet}(K,C_{/F})=\Hom_F(K\star I, C)$$
-where on the right we consider functors that extend $F$. This is an infinity category whenever $C$ is.
+%Let \begin{gather*}
+ %   \star:\Delta \times \Delta\rightarrow \sSet\\
+ %   [n]\star [m]=N([m]\star [n])
+%\end{gather*}
+%and extend it to simplicial sets by density. For example, $(\Lambda^2_0)^\triangle\simeq \Delta^1 \times %\Delta^1$.
 
-When we take $F=d:\Delta^0\rightarrow C$, we get the overcategory $C_{/d}$ which has objects morphisms $c\rightarrow d$. There is a thickened version of this: $$\begin{CD}
-   \mathrm{Map}(c,d)@> > > C^{/d}@> > > \Fun(\Delta^1,C) \\
-   @VVV @VVV @VVV \\
-   \Delta^0@> > > C @> > > C\times C
-\end{CD}$$
+%This allows for the definition of the slice over $F:I\rightarrow C$ as the adjoint to the star operation: $$\Hom_{\sSet}(K,C_{/F})=\Hom_F(K\star I, C)$$
+%where on the right we consider functors that extend $F$. This is an infinity category whenever $C$ is.
 
-In fact, there is a pullback diagram in $\sSet$ $\begin{CD}
-    \mathrm{Map}(\underline{l}, F)@ > > > C^{/F}\\
-    @VVV @VVV \\
-    \Delta^0 @> > > C
-\end{CD}$
+%When we take $F=d:\Delta^0\rightarrow C$, we get the overcategory $C_{/d}$ which has objects morphisms $c\rightarrow d$. There is a thickened version of this: $$\begin{CD}
+%   \mathrm{Map}(c,d)@> > > C^{/d}@> > > \Fun(\Delta^1,C) \\
+%   @VVV @VVV @VVV \\
+%   \Delta^0@> > > C @> > > C\times C
+%\end{CD}$$
 
-\begin{proposition}{Equivalent definition of limit cone}{}
-    TFAE:\begin{itemize}
-        \item $l$ is a limit cone over $F$
-        \item Restriction induces a homotopy equivalence $$\mathrm{Map}(\underline{c}, \overline{F})\simeq \mathrm{Map}(\underline{c},F)$$where $\overline{F}$ is the extension via $l$ of $F$ to $I^\triangle$.
-        \item $\overline{\eta}\in C_{/F}$ is final.
-    \end{itemize}
+%In fact, there is a pullback diagram in $\sSet$ $\begin{CD}
+%    \mathrm{Map}(\underline{l}, F)@ > > > C^{/F}\\
+%    @VVV @VVV \\
+%    \Delta^0 @> > > C
+%\end{CD}$
+
+%\begin{proposition}{Equivalent definition of limit cone}{}
+%    TFAE:\begin{itemize}
+%        \item $l$ is a limit cone over $F$
+%        \item Restriction induces a homotopy equivalence $$\mathrm{Map}(\underline{c}, \overline{F})\simeq %\mathrm{Map}(\underline{c},F)$$where $\overline{F}$ is the extension via $l$ of $F$ to $I^\triangle$.
+%        \item $\overline{\eta}\in C_{/F}$ is final.
+%    \end{itemize}
+%    
+%\end{proposition}
+
+%\begin{proposition}{Proposition}{}
+%    The infinity category of limits $Limits(F)$ is either empty or contractible.
     
-\end{proposition}
-
-\begin{proposition}{Proposition}{}
-    The infinity category of limits $Limits(F)$ is either empty or contractible.
-    
-\end{proposition}
+%\end{proposition}
